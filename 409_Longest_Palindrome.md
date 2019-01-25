@@ -100,3 +100,30 @@ class Solution {
     }
 }
 ```
+# solution 2:
+1. Calculate how many cornial chars
+2. S length - number of cornial chars + 1
+
+```
+class Solution {
+    public int longestPalindrome(String s) {
+        if(s == null || s.length() == 0)
+            return 0;
+        
+        int maxLength = s.length();
+            
+        Set<Character> cordinalSet = new HashSet<>();
+        for(char currentChar : s.toCharArray()) {
+            if(cordinalSet.contains(currentChar)) 
+                cordinalSet.remove(currentChar);
+            else
+                cordinalSet.add(currentChar);
+        }
+        
+        if(cordinalSet.size() > 0)
+            maxLength = maxLength - cordinalSet.size() + 1;
+        
+        return maxLength;
+    }
+}
+```

@@ -54,6 +54,7 @@ class Solution {
 
 # solution 1 improvement 
 1. do not call substring method every time
+2. use set to store substring characters to check if any repeat incoming character
 
 ```
 class Solution {
@@ -61,20 +62,17 @@ class Solution {
         int maxLength = 0;
         char[] charArray =  s.toCharArray();
         for(int i = 0; i < s.length(); i++) {
-            int length = 1; // at least 1 length
-            String substr = charArray[i] + "";
+            Set<Character> subset = new HashSet<>();
+            subset.add(charArray[i]);
             for(int j = i + 1; j < s.length(); j++) {
-                if(!substr.contains(charArray[j]+"")) {
-                    length++;
-                }
-                else {
+                if(subset.contains(charArray[j])) {
                     break;
                 }
-                substr += charArray[j];
+                subset.add(charArray[j]);
             }
     
-            if(length > maxLength )
-                maxLength = length;
+            if(subset.size() > maxLength )
+                maxLength = subset.size();
         }
         return maxLength;
     }

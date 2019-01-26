@@ -21,6 +21,7 @@ Explanation: The answer is "wke", with the length of 3.
              
              
 # solution 1
+brute force to find it!
 1. for loop each char as start from the original string
 2. if found diff, then exit the sub loop and get the length
 3. keep the longest one
@@ -41,6 +42,35 @@ class Solution {
                     break;
                 }
                    
+            }
+    
+            if(length > maxLength )
+                maxLength = length;
+        }
+        return maxLength;
+    }
+}
+```
+
+# solution 1 improvement 
+1. do not call substring method every time
+
+```
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int maxLength = 0;
+        char[] charArray =  s.toCharArray();
+        for(int i = 0; i < s.length(); i++) {
+            int length = 1; // at least 1 length
+            String substr = charArray[i] + "";
+            for(int j = i + 1; j < s.length(); j++) {
+                if(!substr.contains(charArray[j]+"")) {
+                    length++;
+                }
+                else {
+                    break;
+                }
+                substr += charArray[j];
             }
     
             if(length > maxLength )

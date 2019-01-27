@@ -57,3 +57,40 @@ class Solution {
     }
 }
 ```
+
+# Solution 1 bug fix
+Instead of removing first element, remove the last '(' to keep more '*'
+
+```
+class Solution {
+    public boolean checkValidString(String s) {
+        char[] chars = s.toCharArray();
+        
+        LinkedList<Character> myQ = new LinkedList<>();
+        for(int i = 0; i < s.length(); i++) {
+            char curr = chars[i];
+            if(curr != ')')
+                myQ.add(curr);
+            else {
+                System.out.println(myQ);
+                if(myQ.size() == 0)
+                    return false;
+                if(!myQ.removeLastOccurrence('(')) {
+                     myQ.removeFirst();
+                }
+            }
+        }
+        
+        int n = 0;
+        while(myQ.size() > 0) {
+            char first = myQ.removeFirst();
+            if(first == '(')
+                n++;
+            else if (n > 0)
+                n--;
+        }
+        
+        return n == 0;
+    }
+}
+```

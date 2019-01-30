@@ -53,7 +53,7 @@ class Solution {
             int sum = n1 + n2 + n;
             
             if(curr == null)
-                curr = new ListNode(sum % 10 + n);
+                curr = new ListNode(sum % 10);
             else
                 curr.next = new ListNode(sum % 10);
 
@@ -97,7 +97,7 @@ class Solution {
             int sum = n1 + n2 + n;
             
             if(curr == null)
-                curr = new ListNode(sum % 10 + n);
+                curr = new ListNode(sum % 10);
             else
                 curr.next = new ListNode(sum % 10);
 

@@ -57,7 +57,6 @@ class Solution {
             else
                 curr.next = new ListNode(sum % 10);
 
-            System.out.println(curr.val);
             n = sum / 10;
             if(r == null)
                 r = curr;

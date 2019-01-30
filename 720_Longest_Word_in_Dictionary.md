@@ -148,7 +148,7 @@ public class TreeNode {
 
 ```
 
-# Solution 1 bug fix
+# Solution 1 bug fix 2627 ms	
 Now solution passed the test, but the performance is really poor!!!
 1. Use a set to store data avoid duplicate words
 2. fixed build tree logic 
@@ -290,7 +290,7 @@ public class TreeNode {
 }
 ```
 
-# Solution 1 performance improve
+# Solution 1 performance improve 1895 ms
 1. root node always be length 1
 2. after added order set, we only add children, no need for parent node.
 
@@ -367,6 +367,94 @@ class Solution {
                 longestWord = word;
         }
         return longestWord;
+    }
+}
+
+public class TreeNode {
+    private String word;
+    private List<TreeNode> children= new ArrayList<>();
+    
+    public TreeNode(){}
+    
+    public TreeNode(String word) {
+        this.word = word;
+    }
+    
+    public void addChild(TreeNode child) {
+        children.add(child);
+    }
+    
+    public List<TreeNode> getChildren() {
+        return children;
+    }
+    
+    public String getWord() {
+        return word;
+    }
+}
+```
+
+# solution 1 performance improvement 75ms
+1. Calculate depth when creating tree and remember the longest word
+
+```
+class Solution {
+    private TreeNode wordTree = new TreeNode();
+    private String longestWord = "";
+    
+    public String longestWord(String[] words) {
+        // avoid duplicate words
+        Set<String> wordSet = new TreeSet<>();
+        wordSet.addAll(Arrays.asList(words));
+        System.out.println(wordSet);
+        for(String word : wordSet) {
+            buildTree(word);
+        }
+        
+        return longestWord;
+    }
+    
+    private void setLongestWord(String word) {
+        if(word.length() > longestWord.length())
+            longestWord = word;
+        else if(word.length() == longestWord.length() && word.compareTo(longestWord) < 0)
+            longestWord = word;
+    }
+    
+    private void buildTree(String word) {
+        if(word.length() == 1) {
+            // the first node should be always 1 length
+            wordTree.addChild(new TreeNode(word));
+            setLongestWord(word);
+        }
+        else {
+            int depth = 2;//current depth is 1, so next should be 2
+            for(TreeNode child : wordTree.getChildren()) {
+                //System.out.println(child.getWord() + "-------" + word);
+                if(word.startsWith(child.getWord())) {
+                    insertNote(child, word, depth);
+                    break;
+                }
+            } 
+        }    
+       
+    }
+    
+    private void insertNote(TreeNode treeNode, String word, int depth) {
+        TreeNode newNode = new TreeNode(word);
+        if (!treeNode.getChildren().isEmpty()) {
+            // word starts with treeNode.getword
+            List<TreeNode> newChildren = new ArrayList<>();
+            for(TreeNode child : treeNode.getChildren()) {
+                if(word.startsWith(child.getWord())) {
+                    insertNote(child, word, depth + 1);
+                    return;
+                }    
+            }
+        }
+        treeNode.addChild(newNode);
+        if(word.length() == depth)
+            setLongestWord(word);
     }
 }
 

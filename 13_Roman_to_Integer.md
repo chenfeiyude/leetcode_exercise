@@ -46,10 +46,10 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 # Solution 1
 
 1. define a map to find the related number for roman
-2. for loop each digit of input int
-    1). if next digit bigger than current digit, then use (next digit - current digit) as current sum. e.g. IV = 5 - 1 = 4
-    2). if next digit equals to current digit, then (next digit - current digit) as current sum. e.g. III = 1 + 1 + 1 = 3
-    3). if next digit smaller than current digit, then add current sum to total sum and set current sum to next digit
+2. for loop each digit of input int   
+    1). if next digit bigger than current digit, then use (next digit - current digit) as current sum. e.g. IV = 5 - 1 = 4   
+    2). if next digit equals to current digit, then (next digit - current digit) as current sum. e.g. III = 1 + 1 + 1 = 3   
+    3). if next digit smaller than current digit, then add current sum to total sum and set current sum to next digit   
     
 ```
 class Solution {

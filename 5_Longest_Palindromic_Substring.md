@@ -13,7 +13,7 @@ Input: "cbbd"
 Output: "bb"
 
 
-# Solution 1  513ms
+# Solution 1.   513ms
 This solution is too slow!!!
 1. find all sub string start with and end with the same char
 2. check if the sub string length > r, and also is palindrome. If it is, then set r = substr

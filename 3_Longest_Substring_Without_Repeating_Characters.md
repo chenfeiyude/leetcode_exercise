@@ -78,3 +78,54 @@ class Solution {
     }
 }
 ```
+
+# Solution 2
+1. avoid duplicate checking. So only delete pre substring from 0 to the repeat char
+2. if the remaining substring is longer than the max then set to max
+
+```java
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int maxLength = 0;
+        String substr = "";
+        for(int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if(substr.contains(c + "")) {
+                if(substr.length() > maxLength) 
+                    maxLength = substr.length();
+                substr = substr.substring(substr.indexOf(c) + 1);
+            }
+            substr += c;
+            //System.out.println(substr);
+        }
+        return substr.length() > maxLength ? substr.length() : maxLength;
+    }
+}
+```
+
+
+# Solution 3
+1. trying to avoid doing a lot of sub call and use index instead
+
+```java
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int maxLength = 0;
+        int last = 0;
+        int currlength = 0;
+        for(int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if(s.substring(last, i).contains(c + "")) {
+                if(currlength > maxLength) 
+                    maxLength = currlength;
+                int next = s.indexOf(c, last) + 1;
+                currlength = currlength - (next - last);
+                last = next;
+            }
+            currlength++;
+        }
+        
+        return currlength > maxLength ? currlength : maxLength;
+    }
+}
+```

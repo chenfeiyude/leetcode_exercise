@@ -26,7 +26,7 @@ brute force to find it!
 2. if found diff, then exit the sub loop and get the length
 3. keep the longest one
 
-```
+```java
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         int maxLength = 0;
@@ -56,7 +56,7 @@ class Solution {
 1. do not call substring method every time
 2. use set to store substring characters to check if any repeat incoming character
 
-```
+```java
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         int maxLength = 0;

@@ -19,7 +19,7 @@ This solution is too slow!!!
 1. find all sub string start with and end with the same char
 2. check if the sub string length > r, and also is palindrome. If it is, then set r = substr
 
-```
+```java
 class Solution {
     public String longestPalindrome(String s) {
         String r = "";
@@ -62,7 +62,7 @@ class Solution {
 1. Try the longest candidate first
 2. exit the loop early
 
-```
+```java
 class Solution {
     public String longestPalindrome(String s) {
         String r = "";
@@ -111,7 +111,7 @@ Similar solution with 1
 1. store all indexes for same charactors
 2. do the same logic as 1
 
-```
+```java
 class Solution {
     public String longestPalindrome(String s) {
         String r = "";

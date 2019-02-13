@@ -23,7 +23,7 @@ One longest palindrome that can be built is "dccaccd", whose length is 7.
 2. Sum all the oven char's count
 3. plus the longest cordinal count.
 
-```
+```java
 class Solution {
     public int longestPalindrome(String s) {
         if(s == null)
@@ -64,7 +64,7 @@ Issue:
 1. Didn't understand the question fully, and ignored the other cordinal chars.
 2. Should add in other cordinal char length - 1 (which will be even)
 
-```
+```java
 class Solution {
     public int longestPalindrome(String s) {
         if(s == null)
@@ -104,7 +104,7 @@ class Solution {
 1. Calculate how many cornial chars
 2. S length - number of cornial chars + 1
 
-```
+```java
 class Solution {
     public int longestPalindrome(String s) {
         if(s == null || s.length() == 0)

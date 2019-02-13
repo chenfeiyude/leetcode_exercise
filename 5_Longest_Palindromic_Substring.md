@@ -105,3 +105,64 @@ class Solution {
     }
 }
 ```
+
+# Solution 2. 170ms
+Similar solution with 1
+1. store all indexes for same charactors
+2. do the same logic as 1
+
+```
+class Solution {
+    public String longestPalindrome(String s) {
+        String r = "";
+        if(!s.isEmpty()) {
+            if(s.length() == 1)
+                return s;
+            
+            char[] chars = s.toCharArray();
+            r = chars[0] + "";
+            Map<Character, List<Integer>> charsIndex = new HashMap<>();
+            for(int i = 0; i < chars.length; i++) {
+                char c = chars[i];
+                if(!charsIndex.containsKey(c))
+                    charsIndex.put(c, new ArrayList<>());
+                charsIndex.get(c).add(i);
+            }
+            //System.out.println(charsIndex);
+            for(List<Integer> indexes : charsIndex.values()) {
+                int currLength = indexes.get(indexes.size() - 1) - indexes.get(0) + 1;
+                if(indexes.size() == 1 || currLength <= r.length() )
+                    continue;
+                
+                for(int i = 0; i < indexes.size(); i++) {
+                    for(int j = indexes.size() -1; j > i; j--) {
+                        int indexi = indexes.get(i);
+                        int indexj = indexes.get(j);
+                        currLength = indexj - indexi + 1;
+                        if(currLength <= r.length())
+                            break;// no point to check
+                        
+                        //System.out.println(indexi + "--------"+indexj);
+                        String candidate = s.substring(indexi, indexj + 1);
+                        if(isPalindromic(candidate)) {
+                            r = candidate;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return r;
+    }
+    
+    private boolean isPalindromic(String s) {
+        char[] chars = s.toCharArray();
+        int halfSize = chars.length / 2;
+        for(int i = 0; i < halfSize; i++) {
+            if(chars[i] != chars[chars.length - 1 - i])
+                return false;
+        }
+        return true;
+    }
+}
+```

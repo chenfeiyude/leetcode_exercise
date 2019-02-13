@@ -79,7 +79,7 @@ class Solution {
 }
 ```
 
-# Solution 2
+# Solution 2. 29ms
 1. avoid duplicate checking. So only delete pre substring from 0 to the repeat char
 2. if the remaining substring is longer than the max then set to max
 
@@ -104,7 +104,7 @@ class Solution {
 ```
 
 
-# Solution 3
+# Solution 3. 23ms
 1. trying to avoid doing a lot of sub call and use index instead
 
 ```java

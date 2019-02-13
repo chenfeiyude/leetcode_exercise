@@ -16,7 +16,7 @@ return [0, 1].
 3. if not found, then put current number and index into map
 4. repeat step 2, 3
 
-```
+``` java
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();

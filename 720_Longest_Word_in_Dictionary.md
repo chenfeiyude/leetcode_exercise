@@ -25,7 +25,7 @@ The length of words[i] will be in the range [1, 30].
 1. build a word tree
 2. search the longest word from the tree
 
-```
+```java
 class Solution {
     private TreeNode wordTree = new TreeNode();
     
@@ -154,7 +154,7 @@ Now solution passed the test, but the performance is really poor!!!
 2. fixed build tree logic 
 3. added depth when searching a longest word. Only return word when depth match the word length
 
-```
+```java
 class Solution {
     private TreeNode wordTree = new TreeNode();
     
@@ -294,7 +294,7 @@ public class TreeNode {
 1. root node always be length 1
 2. after added order set, we only add children, no need for parent node.
 
-```
+```java
 class Solution {
     private TreeNode wordTree = new TreeNode();
     
@@ -397,7 +397,7 @@ public class TreeNode {
 # solution 1 performance improvement 75ms
 1. Calculate depth when creating tree and remember the longest word
 
-```
+```java
 class Solution {
     private TreeNode wordTree = new TreeNode();
     private String longestWord = "";

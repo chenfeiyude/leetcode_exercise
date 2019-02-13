@@ -14,7 +14,7 @@ Explanation: 342 + 465 = 807.
 2. for loop two array and add up and put into a linked list 
 3. performance is too slow
 
-```
+```java
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -76,7 +76,7 @@ class Solution {
 # Solution 1 improvement
 1. Have a look the answer, and found that no need to do so many for loop
 
-```
+```java
 /**
  * Definition for singly-linked list.
  * public class ListNode {

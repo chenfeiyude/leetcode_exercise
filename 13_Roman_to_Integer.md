@@ -51,7 +51,7 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
     2). if next digit equals to current digit, then (next digit - current digit) as current sum. e.g. III = 1 + 1 + 1 = 3   
     3). if next digit smaller than current digit, then add current sum to total sum and set current sum to next digit   
     
-```
+``` java
 class Solution {
     private static Map<Character, Integer> sMap = new HashMap<>();
     {

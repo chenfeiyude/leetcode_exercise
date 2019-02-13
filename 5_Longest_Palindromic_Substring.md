@@ -58,7 +58,7 @@ class Solution {
 }
 ```
 
-# Solution 1 improvement
+# Solution 1 improvement. 215ms
 1. Try the longest candidate first
 2. exit the loop early
 

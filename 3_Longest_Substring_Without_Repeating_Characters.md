@@ -118,9 +118,8 @@ class Solution {
             if(s.substring(last, i).contains(c + "")) {
                 if(currlength > maxLength) 
                     maxLength = currlength;
-                int next = s.indexOf(c, last) + 1;
-                currlength = currlength - (next - last);
-                last = next;
+                last = s.indexOf(c, last) + 1;
+                currlength = i - last;
             }
             currlength++;
         }

@@ -25,7 +25,7 @@ Output: True
 4. this solution works for the examples above but failed on 
 "(*()"
 
-```
+```java
 class Solution {
     public boolean checkValidString(String s) {
         char[] chars = s.toCharArray();
@@ -61,7 +61,7 @@ class Solution {
 # Solution 1 bug fix
 Instead of removing first element, remove the last '(' to keep more '*'
 
-```
+```java
 class Solution {
     public boolean checkValidString(String s) {
         char[] chars = s.toCharArray();

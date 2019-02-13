@@ -20,7 +20,7 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 1. Any negative value failed straight away
 2. get reverse number and compare with the original number, if they are the same, then it is true.
 
-```
+```java
 class Solution {
     public boolean isPalindrome(int x) {
         if(x < 0)

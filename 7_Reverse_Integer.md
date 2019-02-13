@@ -22,7 +22,7 @@ Assume we are dealing with an environment which could only store integers within
 2. pop all the digits from the stack, then it will be reverse
 3. if the first digit of reverse number is not equals the last digit of the original number, then it is overflow
 
-```
+```java
 class Solution {
     public int reverse(int x) {
         Stack<Integer> stack = new Stack<>();
@@ -59,7 +59,8 @@ class Solution {
 1. do the pop and push in one same loop
 2. check the first digit of the reverse int if equals to the last digit of the input int. It will be changed if it is overflow
 3. if the last digit of the input int is 0, it will never overfollow so we dont need to check that for this case
-```
+
+```java
 class Solution {
     public int reverse(int x) {
         int flag = x < 0? -1 : 1;

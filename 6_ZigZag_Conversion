@@ -1,0 +1,105 @@
+# Problem
+
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+P   A   H   N
+A P L S I I G
+Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+
+Write the code that will take a string and make this conversion given a number of rows:
+
+string convert(string s, int numRows);
+Example 1:
+
+Input: s = "PAYPALISHIRING", numRows = 3
+Output: "PAHNAPLSIIGYIR"
+Example 2:
+
+Input: s = "PAYPALISHIRING", numRows = 4
+Output: "PINALSIGYAHRPI"
+Explanation:
+
+P     I    N
+A   L S  I G
+Y A   H R
+P     I
+
+
+# Solution 1 45ms
+1. create a array with size numRows, and store each column into the array and then store the array into a list
+e.g. 
+1). PAYP
+2).   A 
+3).  L
+4). ISHI
+6).   R
+7).  I
+8). NG
+
+2. for loop the array size (numRows), and then for loop the list to out put the current position's 
+char and append to result string
+e.g. 
+position 1. P, _ , _, I, _, _, N.  -> PIN
+
+```java
+class Solution {
+    public String convert(String s, int numRows) {
+        if(numRows == 1)
+            return s;
+        int n = numRows - 2;
+        int count = 1;
+        int rowCount = 0;
+        int rowChange = numRows - 1;
+        char[] currChars = new char[numRows];
+        List<char[]> allChars = new ArrayList<>();
+        String r = "";
+        char[] chars = s.toCharArray();
+        for(int i = 0; i < chars.length; i++) {
+            int p = rowCount % rowChange;
+            //System.out.println(count + "!!!!!");
+            if(p == 0) {
+                currChars[count - 1] = chars[i];
+            }
+            else{
+                currChars[numRows - count - 1] = chars[i];
+            }
+            // System.out.println(currChars);
+            
+            if(p == 0) {
+                if(count < numRows)
+                    count++;
+                else {
+                    rowCount++;
+                    count=1;
+                    allChars.add(currChars);
+                    currChars = new char[numRows];
+                }
+            }
+            else {
+                rowCount++;
+                if(count < n)
+                    count++;
+                else {
+                    allChars.add(currChars);
+                    currChars = new char[numRows];
+                    count=1;
+                }
+                    
+            }
+        }
+        allChars.add(currChars);
+        //System.out.println(allChars.size() + "---" + rowCount);
+        for(int i = 0; i < numRows; i++)
+            for(char[] temp : allChars) {
+                if(temp[i] > 0)
+                    r += temp[i];
+                if(r.length() == s.length())
+                    return r;
+                //System.out.println(r);
+            }
+        
+        return r;
+    }
+}
+```

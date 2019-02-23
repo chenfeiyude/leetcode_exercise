@@ -104,3 +104,61 @@ class Solution {
     }
 }
 ```
+
+# Solution 1 improvement. 18ms
+1. record index instead of doing a lot of string append
+
+```java
+class Solution {
+    public int myAtoi(String str) {
+        Long r = 0l;
+        str = str.trim();
+        //System.out.println(str);
+        try {
+            r = Long.valueOf(str);
+            return getInt(r);
+        }
+        catch(Exception e) {
+            // it is not interger
+        }
+        
+        if(!str.isEmpty()) {
+            char[] chars = str.toCharArray();
+            char first = chars[0];
+            //System.out.println(first);
+            if(isNumber(first) || first == '-' || first == '+') {
+                int index = 1;
+                for(int i = 1; i < chars.length; i++) {
+                    // System.out.println(chars[i] + "----" + i);
+                    index = i;
+                    if(i > 11 || !isNumber(chars[i]))
+                        break;
+                }
+                
+                try {
+                    r = Long.valueOf(str.substring(0, index));
+                    return getInt(r);
+                }
+                catch(Exception e) {
+                    // it is not interger
+                    return 0;
+                }
+            }
+        }
+       
+        return r.intValue();
+    }
+    
+    private boolean isNumber(char c) {
+        return c <= '9' && c >= '0';
+    }
+    
+    private int getInt(Long r) {
+        if(r > Integer.MAX_VALUE)
+            return Integer.MAX_VALUE;
+        else if (r < Integer.MIN_VALUE)
+            return Integer.MIN_VALUE;
+        return r.intValue();
+    }
+}
+```

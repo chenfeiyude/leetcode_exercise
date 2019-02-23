@@ -43,7 +43,7 @@ Explanation: The number "-91283472332" is out of the range of a 32-bit signed in
              Thefore INT_MIN (−231) is returned.
              
              
-# Solution 1 20 ms
+# Solution 1. 20 ms
 1. use long to store result 
 2. trim the string and try to conver to long directly. If it is a number then check if it is overflow and return max or min value if so. Otherwise return int value
 3. for loop all chars and get digits 

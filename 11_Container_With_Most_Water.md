@@ -17,7 +17,6 @@ Output: 49
 ```java
 class Solution {
     public int maxArea(int[] height) {
-        Map<Integer, Integer> containers = new HashMap<>();
         int result = 0;
         for(int i = 0; i < height.length; i++) {
             int curri = height[i];

@@ -46,3 +46,41 @@ class Solution {
     }
 }
 ```
+
+# Solution 2. 4ms
+1. removed one for loop
+
+```java
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        String r = "";
+        if(strs.length == 0)
+            return r;
+        
+        boolean isDone = false;
+        int i = 0;
+        boolean isCommon = true;
+        Character c = null;
+        while(!isDone) {
+            c = null;
+            isCommon = true;
+            for(String str : strs) {
+                if(str.length() == i) {
+                    isDone = true;
+                    break;
+                }
+                if(c == null)
+                    c = str.charAt(i);
+                else if(str.charAt(i) != c)
+                    isCommon = false;
+            }
+            
+            if(!isCommon || isDone)
+                break;
+            r += c;
+            i++;
+        }
+        return r;
+    }
+}
+```

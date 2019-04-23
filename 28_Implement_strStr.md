@@ -26,7 +26,7 @@ For the purpose of this problem, we will return 0 when needle is an empty string
 # Solution 1. 0ms
 use java indexOf directly...did not understand the requirement fully
 
-```
+```java
 class Solution {
     public int strStr(String haystack, String needle) {
         if(needle == null || needle == "") {

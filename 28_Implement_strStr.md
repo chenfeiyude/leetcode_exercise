@@ -76,3 +76,40 @@ class Solution {
     }
 }
 ```
+
+# Solution 2 improvement. 3ms
+exit earlier when the rest string is shorter than needle
+
+```java
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if(needle == null || needle.equals("")) {
+            return 0;
+        }
+        int index = -1;
+        
+        if(needle.length() > haystack.length())
+            return index;
+        char first = needle.charAt(0);
+        
+        for(int i = 0; i < haystack.length(); i++) {
+            if(haystack.charAt(i) == first && i + needle.length() <= haystack.length()) {
+                int j = 1;
+                for(; j < needle.length(); j++) {
+                    if(haystack.charAt(i + j) != needle.charAt(j)) {
+                        break;
+                    }
+                }
+                
+                if(j == needle.length()) {
+                    index = i;
+                    break;
+                }
+            }
+            
+        }
+        
+        return index;
+    }
+}
+```

@@ -56,16 +56,15 @@ class Solution {
         int index = -1;
         for(int i = 0; i < haystack.length(); i++) {
             if(haystack.charAt(i) == needle.charAt(0)) {
-                int length = 0;
-                for(int j = 0; j < needle.length();) {
-                    if(i + j >= haystack.length() || haystack.charAt(i + j) != needle.charAt(j)) {
+                int j = 1;
+                for(; j < needle.length(); j++) {
+                    int curr = i + j;
+                    if(curr >= haystack.length() || haystack.charAt(curr) != needle.charAt(j)) {
                         break;
                     }
-                    length = ++j;
                 }
                 
-                if(length == needle.length()) 
-                {
+                if(j == needle.length()) {
                     index = i;
                     break;
                 }

@@ -77,7 +77,7 @@ class Solution {
 }
 ```
 
-# Solution 2 improvement. 3ms
+# Solution 2 improvement. 2ms
 exit earlier when the rest string is shorter than needle
 
 ```java
@@ -93,7 +93,11 @@ class Solution {
         char first = needle.charAt(0);
         
         for(int i = 0; i < haystack.length(); i++) {
-            if(haystack.charAt(i) == first && i + needle.length() <= haystack.length()) {
+            // no need to continue here
+            if(i + needle.length() > haystack.length())
+                break;
+            
+            if(haystack.charAt(i) == first) {
                 int j = 1;
                 for(; j < needle.length(); j++) {
                     if(haystack.charAt(i + j) != needle.charAt(j)) {

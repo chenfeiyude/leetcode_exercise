@@ -73,26 +73,19 @@ class Solution {
         lettersMap.put('9', new char[]{'w','x','y','z'});
     }
     
-    private Set<String> resultSet = new HashSet<>();
+    private List<String> result = new ArrayList<>();
     public List<String> letterCombinations(String digits) {
-        if(digits == null || digits.equals(""))
-            return new ArrayList<>();
-        combinedStr("", -1, digits.toCharArray());
-        return new ArrayList<>(resultSet);
+        if(digits != null && !digits.equals(""))
+            combinedStr("", 0, digits.toCharArray());
+        return result;
     }
     
     private void combinedStr(String currStr, int currIndex, char[] digitChars) {
-        currIndex++;
-        
-        if(currIndex == digitChars.length) {
-            resultSet.add(currStr);
-        }
-        else {
-            char[] chars = lettersMap.get(digitChars[currIndex]);
-            for(char c : chars) {
+        if(currIndex == digitChars.length) 
+            result.add(currStr);
+        else 
+            for(char c : lettersMap.get(digitChars[currIndex++])) 
                 combinedStr(currStr + c, currIndex, digitChars);
-            }
-        }
     }
 }
 ```

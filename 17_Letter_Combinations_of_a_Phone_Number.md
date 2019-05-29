@@ -87,7 +87,7 @@ class Solution {
         if(currIndex == digitChars.length) {
             resultSet.add(currStr);
         }
-        else if(currIndex < digitChars.length) {
+        else {
             char[] chars = lettersMap.get(digitChars[currIndex]);
             for(char c : chars) {
                 combinedStr(currStr + c, currIndex, digitChars);

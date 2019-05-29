@@ -57,3 +57,42 @@ class Solution {
     }
 }
 ```
+
+#Solution 1. simplify codes. 1ms
+```java
+class Solution {
+    private static Map<Character, char[]> lettersMap = new HashMap<>();
+    static {
+        lettersMap.put('2', new char[]{'a','b','c'});
+        lettersMap.put('3', new char[]{'d','e','f'});
+        lettersMap.put('4', new char[]{'g','h','i'});
+        lettersMap.put('5', new char[]{'j','k','l'});
+        lettersMap.put('6', new char[]{'m','n','o'});
+        lettersMap.put('7', new char[]{'p','q','r','s'});
+        lettersMap.put('8', new char[]{'t','u','v'});
+        lettersMap.put('9', new char[]{'w','x','y','z'});
+    }
+    
+    private Set<String> resultSet = new HashSet<>();
+    public List<String> letterCombinations(String digits) {
+        if(digits == null || digits.equals(""))
+            return new ArrayList<>();
+        combinedStr("", -1, digits.toCharArray());
+        return new ArrayList<>(resultSet);
+    }
+    
+    private void combinedStr(String currStr, int currIndex, char[] digitChars) {
+        currIndex++;
+        
+        if(currIndex == digitChars.length) {
+            resultSet.add(currStr);
+        }
+        else if(currIndex < digitChars.length) {
+            char[] chars = lettersMap.get(digitChars[currIndex]);
+            for(char c : chars) {
+                combinedStr(currStr + c, currIndex, digitChars);
+            }
+        }
+    }
+}
+```

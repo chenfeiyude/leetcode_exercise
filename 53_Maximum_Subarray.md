@@ -33,3 +33,31 @@ class Solution {
     }
 }
 ```
+
+# Solution 2. 
+1. If current value is bigger than previous sum + current value, no need to keep previous sum any more, so just reset current sum
+to current value.
+
+2. Keep the maximum current value.
+
+```
+class Solution {
+    public int maxSubArray(int[] nums) {
+        if(nums.length == 1)
+            return nums[0];
+        
+        int r = nums[0];
+        int currSum = r;
+        for(int i = 1; i < nums.length; i++) {
+            currSum += nums[i];
+            
+            if(currSum < nums[i]) 
+                currSum = nums[i];// reset current sum to current value
+            
+            if(currSum > r) 
+                r = currSum;
+        }
+        return r;
+    }
+}
+```

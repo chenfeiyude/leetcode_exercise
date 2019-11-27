@@ -34,7 +34,7 @@ class Solution {
 }
 ```
 
-# Solution 2. 
+# Solution 2. 0ms
 1. If current value is bigger than previous sum + current value, no need to keep previous sum any more, so just reset current sum
 to current value.
 
@@ -59,5 +59,27 @@ class Solution {
         }
         return r;
     }
+}
+```
+
+# Solution 3. 1ms
+use divide and conquer approach 
+
+```
+class Solution {
+    public int maxSubArray(int[] nums) {
+        return maxSubArray(nums, nums[0], 1, nums[0]);
+    }
+    
+    private int maxSubArray(int[] nums, int max, int currIndex, int currSum) {
+        if(currIndex == nums.length)
+            return max;
+        
+        int currValue = nums[currIndex];
+        currSum += currValue;
+        if(currSum < currValue)
+            currSum = currValue;
+        return maxSubArray(nums, currSum>max?currSum:max, currIndex+1, currSum);
+    } 
 }
 ```

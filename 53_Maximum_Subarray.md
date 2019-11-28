@@ -63,7 +63,7 @@ class Solution {
 ```
 
 # Solution 3. 1ms
-use divide and conquer approach 
+Recursive way
 
 ```
 class Solution {

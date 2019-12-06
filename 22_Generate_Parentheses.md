@@ -90,18 +90,19 @@ class Solution {
     private void addResult(List<String> results, String current, int start, int end, int n) {
         // System.out.println(current + "," + start + "," + end);
         StringBuilder temp = new StringBuilder(current);
-        if(temp.charAt(start) != temp.charAt(end)) {
-            char ic = temp.charAt(start);
-            temp.setCharAt(start, temp.charAt(end)); 
-            temp.setCharAt(end, ic);
-            if(!results.contains(temp.toString())
-               && isMatchResult(temp.toString())) {
-                results.add(temp.toString());
-                addResult(results, temp.toString(), start, end, n);
+        char cs = temp.charAt(start);
+        char ce = temp.charAt(end);
+        if(cs != ce) {
+            temp.setCharAt(start, ce); 
+            temp.setCharAt(end, cs);
+            String newString = temp.toString();
+            if(!results.contains(newString) && isMatchResult(newString)) {
+                results.add(newString);
+                addResult(results, newString, start, end, n);
             }
+            
         }
         
-        // no need to swap the last char
         if(end < n * 2 - 2)
             end++;
         else if(start < n - 1) {

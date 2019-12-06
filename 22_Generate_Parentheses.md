@@ -65,3 +65,68 @@ class Solution {
     }
 }
 ```
+
+# Solution 2. 20ms
+recursive way 
+```
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> results = new ArrayList<>();
+        if(n <= 0)
+            return results;
+        String s = "";
+        for(int i = 0; i < n; i++)
+        {
+            s = "(" + s + ")";
+        }
+        results.add(s);
+        if(n >= 2) {
+            addResult(results, s, 1, n, n);
+        }
+        
+        return results;
+    }
+    
+    private void addResult(List<String> results, String current, int start, int end, int n) {
+        // System.out.println(current + "," + start + "," + end);
+        StringBuilder temp = new StringBuilder(current);
+        if(temp.charAt(start) != temp.charAt(end)) {
+            char ic = temp.charAt(start);
+            temp.setCharAt(start, temp.charAt(end)); 
+            temp.setCharAt(end, ic);
+            if(!results.contains(temp.toString())
+               && isMatchResult(temp.toString())) {
+                results.add(temp.toString());
+                addResult(results, temp.toString(), start, end, n);
+            }
+        }
+        
+        // no need to swap the last char
+        if(end < n * 2 - 2)
+            end++;
+        else if(start < n - 1) {
+            start++;
+            end = n;
+        }
+        else
+            return;
+        
+        addResult(results, current, start, end, n);
+    }
+    
+    private boolean isMatchResult(String s) {
+        char[] chars = s.toCharArray();
+        int result = 0;
+        for(char c : chars) {
+            if(c == '(')
+                result++;
+            else
+                result--;
+            if(result < 0)
+                return false;
+        }
+        return true;
+        
+    }
+}
+```

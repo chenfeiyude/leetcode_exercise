@@ -33,9 +33,7 @@ recursive find out all the possibilities. Results matched while testing, but tim
 class Solution {
     private int r = 0;
     public int climbStairs(int n) {
-        cal(1, 0, n);
-        cal(2, 0, n);
-        
+        cal(0, 0, n);
         return r;
     }
     

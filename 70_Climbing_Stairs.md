@@ -45,8 +45,10 @@ class Solution {
         if(currentSum > sum) {
             return;
         }
-        else if (currentSum == sum)
+        else if (currentSum == sum) {
             r++;
+            return;
+        }
         
         cal(1, currentSum, sum);
         cal(2, currentSum, sum);

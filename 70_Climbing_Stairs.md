@@ -55,6 +55,7 @@ class Solution {
 ```
 
 # Solution 2. 1ms
+save the results, avoid calculating duplicate results multiple times
 
 ```
 class Solution {

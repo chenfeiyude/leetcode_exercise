@@ -53,3 +53,30 @@ class Solution {
     }
 }
 ```
+
+# Solution 2. 1ms
+
+```
+class Solution {
+    private Map<Integer, Integer> rMap = new HashMap<>();
+    public int climbStairs(int n) {
+        return cal(0, 0, n);
+    }
+    
+    private int cal(int current, int currentSum, int sum) {
+        currentSum += current;
+        
+        if(currentSum > sum) {
+            return 0;
+        }
+        else if (currentSum == sum) {
+            return 1;
+        }
+        if(rMap.containsKey(currentSum))
+            return rMap.get(currentSum);
+        
+        rMap.put(currentSum, cal(1, currentSum, sum) + cal(2, currentSum, sum));
+        return rMap.get(currentSum);
+    }
+}
+```

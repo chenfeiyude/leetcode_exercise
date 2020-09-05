@@ -32,7 +32,7 @@ Output: -1
  ```
 
 # Solution 2
-
+Binary search, make sure one half is sorted and check 
 ```
 class Solution {
     public int search(int[] nums, int target) {
@@ -44,7 +44,6 @@ class Solution {
     private int findResult(int l, int r, int[] nums, int target) {
         if(l <= r) {
             int m = (l+r) / 2;
-            System.out.println(l +"###" + m + "###" + r); 
             
             if(target == nums[m]) {
                 return m;
@@ -52,12 +51,14 @@ class Solution {
             else if (l == r)
                 return -1;
             else if (nums[l] <= nums[m]) {
+                // left part is sorted, then check if target is in left
                 if(target < nums[m] && target >= nums[l])
                     return findResult(l, m - 1, nums, target);
                 else 
                     return findResult(m+1, r, nums, target);
             }
             else {
+                // right part is sorted, then check if target is in right
                 if(target > nums[m] && target <= nums[r])
                     return findResult(m+1, r, nums, target);
                 else

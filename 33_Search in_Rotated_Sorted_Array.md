@@ -30,3 +30,44 @@ Output: -1
     }
 }
  ```
+
+# Solution 2
+
+```
+class Solution {
+    public int search(int[] nums, int target) {
+        int l = 0, r = nums.length -1;
+        
+        return findResult(l, r, nums, target);
+    }
+    
+    private int findResult(int l, int r, int[] nums, int target) {
+        if(l <= r) {
+            int m = (l+r) / 2;
+            System.out.println(l +"###" + m + "###" + r); 
+            
+            if(target == nums[m]) {
+                return m;
+            }
+            else if (l == r)
+                return -1;
+            else if (nums[l] <= nums[m]) {
+                if(target < nums[m] && target >= nums[l])
+                    return findResult(l, m - 1, nums, target);
+                else 
+                    return findResult(m+1, r, nums, target);
+            }
+            else {
+                if(target > nums[m] && target <= nums[r])
+                    return findResult(m+1, r, nums, target);
+                else
+                    return findResult(l, m - 1, nums, target);
+                    
+            }
+        }
+        
+        return -1;
+    }
+    
+}
+```

@@ -11,11 +11,8 @@ try every solution and count, but it is too slow
 class Solution {
     private int count = 0;
     public int uniquePaths(int m, int n) {
-        if(m == 1 && n == 1)
-            return 1;
         // start at 1, 1
-        findPath(2, 1, m, n);
-        findPath(1, 2, m, n);
+        findPath(1, 1, m, n);
         return count;
     }
     
